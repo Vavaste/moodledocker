@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: apache
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    volumes:
+      - ./moodle:/var/www/html
+    environment:
+      MOODLE_DB_HOST: db
+      MOODLE_DB_NAME: moodle
+      MOODLE_DB_USER: moodleuser
+      MOODLE_DB_PASSWORD: securepassword
+
+  db:
+    container_name: db-1
+    ports:
+      - "3306:3306"
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - ./query.sql:/docker-entrypoint-initdb.d/query.sql
