@@ -1,0 +1,57 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template core_course/coursecard
+
+    This template renders the a card for the course cards.
+
+    Example context (json):
+    {
+        "courses": [
+            {
+                "name": "Assignment due 1",
+                "viewurl": "https://moodlesite/course/view.php?id=2",
+                "courseimage": "https://moodlesite/pluginfile/123/course/overviewfiles/123.jpg",
+                "fullname": "course 3",
+                "hasprogress": true,
+                "progress": 10,
+                "visible": true
+            }
+        ]
+    }
+}}
+
+<div class="card course-card mx-1" role="listitem"
+     data-region="course-content"
+     data-course-id="{{{id}}}">
+    <z-card class="demo-card" style="--z-card--text-padding: 8px">
+        <img slot="cover" src="{{{courseimage}}}">
+        <span class="body-5" slot="metadata">
+            {{name}}
+        </span>
+        <a href="{{viewurl}}" target="_blank" slot="title" style="padding: 0 8px;" class="z-link">
+            <span>{{fullname}}</span>
+        </a>
+        <p class="body-3" slot="text"  style="padding: 0 8px;">
+            Some description for the content of the card.
+        </p>
+        <div slot="action" style="padding: 8px 8px;" >
+            <z-button variant="secondary" ><z-icon name="share"></z-icon></z-button>
+            <z-button variant="secondary" ><z-icon name="delete"></z-icon></z-button>
+        </div>
+    </z-card>
+</div>
