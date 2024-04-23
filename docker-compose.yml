@@ -6,10 +6,10 @@ services:
     build: .
     ports:
       - "80:80"
-    depends_on:
-      - db
     volumes:
       - ./moodle:/var/www/html
+    depends_on:
+      - db
     environment:
       MOODLE_DB_HOST: db
       MOODLE_DB_NAME: moodle

@@ -22,9 +22,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Abilita il modulo rewrite di Apache
 RUN a2enmod rewrite
 
-# Copia solo il contenuto della cartella Moodle nel percorso di Apache
-COPY moodle/ /var/www/html/
-
 # Copia la configurazione
 COPY config.php /moodle
 
