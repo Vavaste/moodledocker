@@ -9,6 +9,7 @@ services:
       - "443:443"
     volumes:
       - ./moodle:/var/www/html
+      - ./bust:/var/www/html/theme/bust
     depends_on:
       - db
     environment:
